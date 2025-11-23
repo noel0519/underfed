@@ -1,0 +1,34 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.all;
+
+entity hddl_mux is
+port(Din: in std_logic_vector(3 downto 0); S : in std_logic_vector(1 downto 0)  ; Y : out std_logic);
+end entity hddl_mux;
+
+architecture bihav of hddl_mux is
+
+
+
+begin 
+process(Din,S)
+begin
+case S is
+
+when "00" =>
+Y <= Din(0);
+when "01" =>
+Y <= Din(1);
+when "10" =>
+Y <= Din(2);
+when "11" =>
+Y <= Din(3);
+when others =>
+Y <= 'X';
+
+end case;
+
+end process;
+
+end architecture bihav;
+
+ 
