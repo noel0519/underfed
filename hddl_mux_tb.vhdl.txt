@@ -1,0 +1,45 @@
+
+
+
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+
+entity hddl_mux_tb is
+--  Port ( );
+end hddl_mux_tb;
+
+architecture Behavioral of hddl_mux_tb is
+signal Din_tb : std_logic_vector(3 downto 0);
+
+signal S_tb : std_logic_vector(1 downto 0);
+signal Y_tb : std_logic;
+
+component hddl_mux 
+port( Din : in std_logic_vector(3 downto 0);
+      S : in std_logic_vector(1 downto 0);
+      Y : out std_logic
+);
+end component;
+begin
+
+DUT : hddl_mux
+port map(
+Din => Din_tb,
+S => S_tb,
+Y => Y_tb
+);
+
+STIM_PROC: process 
+begin
+Din_tb <="0001";
+S_tb <= "00"; wait for 10ns;
+S_tb <= "01"; wait for 10ns;
+S_tb <= "10"; wait for 10ns;
+S_tb <= "11"; wait for 10ns;
+
+end process;
+
+
+
+end Behavioral;
